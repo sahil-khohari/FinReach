@@ -413,15 +413,136 @@
         .btn-ai:hover {
             animation: none;
         }
+        /* Landing Page Styles */
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem 6rem;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-main);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .hero .btn-primary {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg-color);
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .hero .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(102, 252, 241, 0.6);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+            padding: 0 1rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        @media (min-width: 768px) {
+            .features { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .feature-card {
+            background: rgba(31, 40, 51, 0.4);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(31, 40, 51, 0.6);
+            border-color: rgba(102, 252, 241, 0.2);
+        }
+
+        .feature-icon {
+            color: var(--accent);
+            width: 32px;
+            height: 32px;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-desc {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        .demo-section-title {
+            text-align: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            scroll-margin-top: 2rem;
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>FinReach <span>Analytics</span></h1>
-        <p class="subtitle">AI-Powered Next-Best-Action Engine & Statistical Funnel Analysis</p>
-    </header>
+    <!-- Landing Page Hero -->
+    <section class="hero">
+        <h1>Unlock Growth with <span>FinReach</span></h1>
+        <p>A demonstration of modern data pipelines turning raw micro-lending telemetry into statistically significant insights and AI-driven business strategies. Try the interactive tools below to see it in action.</p>
+        <a href="#demo" class="btn-primary">Try the Interactive Demo</a>
+    </section>
 
+    <!-- Why FinReach Features -->
+    <section class="features">
+        <div class="feature-card">
+            <svg class="feature-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+            <h3 class="feature-title">Data-Driven Rigor</h3>
+            <p class="feature-desc">Stop guessing. We perform live two-proportion Z-tests on A/B funnel variants to ensure your product changes yield statistically significant improvements.</p>
+        </div>
+        <div class="feature-card">
+            <svg class="feature-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+            <h3 class="feature-title">AI Next-Best-Action</h3>
+            <p class="feature-desc">Dashboards are passive. FinReach pipes your live behavioral clusters straight into the Gemini LLM to generate proactive, highly-tailored strategic recommendations.</p>
+        </div>
+        <div class="feature-card">
+            <svg class="feature-icon" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+            <h3 class="feature-title">RFM Segmentation</h3>
+            <p class="feature-desc">Automatically categorizes your borrowers into actionable groups based on Recency, Frequency, and Monetary value for highly targeted marketing interventions.</p>
+        </div>
+    </section>
+
+    <!-- Interactive Dashboard Section -->
+    <h2 id="demo" class="demo-section-title">Interactive Demo Workspace</h2>
     <div class="dashboard-grid">
         
         <!-- A/B Testing Panel -->
