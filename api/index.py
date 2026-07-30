@@ -24,7 +24,6 @@ app.add_middleware(
 )
 
 @app.get("/api/ab-test")
-@app.get("/ab-test")
 def run_ab_test():
     f = io.StringIO()
     with redirect_stdout(f):
@@ -33,7 +32,6 @@ def run_ab_test():
     return {"status": "success", "output": output}
 
 @app.get("/api/ai-action")
-@app.get("/ai-action")
 def run_ai_action():
     sample_data = [
         {"segment_name": "Champions", "avg_loan_size": 500, "repayment_rate": 0.98, "repeat_borrower_rate": 0.85},
