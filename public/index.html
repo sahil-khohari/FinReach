@@ -44,22 +44,24 @@
             background-color: var(--bg-color);
         }
 
-        #bg-animated {
+        .video-background {
             position: fixed;
-            top: -10%; left: -10%;
-            width: 120vw; height: 120vh;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             z-index: 0;
-            background-image: url('https://images.unsplash.com/photo-1619111225446-7a840e5c097e?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.25;
             pointer-events: none;
-            animation: slowZoomRotate 30s linear infinite alternate;
+            overflow: hidden;
+            opacity: 0.35;
         }
 
-        @keyframes slowZoomRotate {
-            0% { transform: scale(1) rotate(0deg); }
-            100% { transform: scale(1.15) rotate(3deg); }
+        .video-background iframe {
+            width: 100vw;
+            height: 56.25vw;
+            min-height: 100vh;
+            min-width: 177.77vh;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         header {
@@ -706,7 +708,13 @@
     </style>
 </head>
 <body>
-    <div id="bg-animated"></div>
+    <div class="video-background">
+        <iframe src="https://www.youtube.com/embed/x5Ew3Ghonq8?autoplay=1&mute=1&loop=1&playlist=x5Ew3Ghonq8&controls=0&showinfo=0&autohide=1&modestbranding=1" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen>
+        </iframe>
+    </div>
 
     <!-- Landing Page Hero -->
     <section class="hero">
