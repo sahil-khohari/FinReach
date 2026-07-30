@@ -511,6 +511,176 @@
             margin-bottom: 3rem;
             scroll-margin-top: 2rem;
         }
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: var(--glass-bg);
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            padding: 3rem;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 50px rgba(102, 252, 241, 0.2);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--danger);
+        }
+
+        .modal-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        /* Flowchart Animations (Anime/Manga Style) */
+        .flow-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            min-height: 200px;
+            padding: 2rem 0;
+        }
+
+        .flow-node {
+            background: rgba(0,0,0,0.5);
+            border: 2px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            width: 180px;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .flow-node.active {
+            animation: nodePopIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .flow-line {
+            position: absolute;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            z-index: 1;
+            top: 50%;
+            transform: translateY(-50%);
+            overflow: hidden;
+        }
+
+        .flow-line::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .flow-line.active::after {
+            animation: energyFlow 1.5s linear infinite;
+        }
+
+        /* Specific node styles */
+        .node-engine {
+            border-radius: 50%;
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-align: center;
+            border-width: 3px;
+        }
+        
+        .node-engine.active {
+            animation: nodePopIn 0.5s forwards, pulseGlow 2s infinite 0.5s;
+        }
+
+        .node-result {
+            background: rgba(81, 207, 102, 0.2);
+            color: var(--success);
+            border-color: var(--success);
+            font-size: 1.5rem;
+        }
+
+        .node-result.active {
+            animation: nodePopIn 0.5s forwards;
+            box-shadow: 0 0 30px rgba(81, 207, 102, 0.4);
+        }
+
+        /* Animations */
+        @keyframes nodePopIn {
+            0% { opacity: 0; transform: translateY(30px) scale(0.8); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes energyFlow {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .feature-card {
+            cursor: pointer;
+        }
+        
+        .feature-card:hover::after {
+            content: 'Click to view process →';
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: bold;
+            font-family: 'Outfit', sans-serif;
+            animation: fadeInUp 0.3s ease forwards;
+        }
     </style>
 </head>
 <body>
@@ -524,17 +694,17 @@
 
     <!-- Why FinReach Features -->
     <section class="features">
-        <div class="feature-card">
+        <div class="feature-card" onclick="openModal('rigor')">
             <svg class="feature-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
             <h3 class="feature-title">Data-Driven Rigor</h3>
             <p class="feature-desc">Stop guessing. We perform live two-proportion Z-tests on A/B funnel variants to ensure your product changes yield statistically significant improvements.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card" onclick="openModal('ai')">
             <svg class="feature-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
             <h3 class="feature-title">AI Next-Best-Action</h3>
             <p class="feature-desc">Dashboards are passive. FinReach pipes your live behavioral clusters straight into the Gemini LLM to generate proactive, highly-tailored strategic recommendations.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card" onclick="openModal('rfm')">
             <svg class="feature-icon" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
             <h3 class="feature-title">RFM Segmentation</h3>
             <p class="feature-desc">Automatically categorizes your borrowers into actionable groups based on Recency, Frequency, and Monetary value for highly targeted marketing interventions.</p>
@@ -631,7 +801,102 @@
         
     </div>
 
+    <!-- Animated Flowchart Modal -->
+    <div class="modal-overlay" id="flow-modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal(event)">✖</button>
+            <h2 class="modal-title" id="modal-title">Process Flow</h2>
+            
+            <div class="flow-container" id="flow-container">
+                <!-- Dynamically injected via JS -->
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Modal & Animation Logic
+        const flowData = {
+            'rigor': {
+                title: 'Data-Driven Rigor',
+                html: `
+                    <div style="display:flex; flex-direction:column; gap:20px; width:180px;">
+                        <div class="flow-node" id="node-1">Traffic: Variant A</div>
+                        <div class="flow-node" id="node-2">Traffic: Variant B</div>
+                    </div>
+                    <div class="flow-line" id="line-1" style="width:100px; left:180px;"></div>
+                    <div class="flow-node node-engine" id="node-3">Scipy Stats<br>Engine</div>
+                    <div class="flow-line" id="line-2" style="width:100px; left:420px;"></div>
+                    <div class="flow-node node-result" id="node-4">Winner Found</div>
+                `
+            },
+            'ai': {
+                title: 'AI Next-Best-Action',
+                html: `
+                    <div class="flow-node" id="node-1">RFM Clusters<br>(JSON Data)</div>
+                    <div class="flow-line" id="line-1" style="width:120px; left:180px;"></div>
+                    <div class="flow-node node-engine" id="node-2" style="border-color: #aa00ff; box-shadow: 0 0 20px rgba(170,0,255,0.4);">Gemini LLM</div>
+                    <div class="flow-line" id="line-2" style="width:120px; left:440px;"></div>
+                    <div class="flow-node" id="node-3" style="border-color: var(--accent);">Strategy Cards</div>
+                `
+            },
+            'rfm': {
+                title: 'RFM Segmentation',
+                html: `
+                    <div style="display:flex; flex-direction:column; gap:10px; width:150px;">
+                        <div class="flow-node" id="node-1" style="padding: 1rem;">Recency Score</div>
+                        <div class="flow-node" id="node-2" style="padding: 1rem;">Frequency Score</div>
+                        <div class="flow-node" id="node-3" style="padding: 1rem;">Monetary Score</div>
+                    </div>
+                    <div class="flow-line" id="line-1" style="width:80px; left:150px;"></div>
+                    <div class="flow-node node-engine" id="node-4">Pandas QCut</div>
+                    <div class="flow-line" id="line-2" style="width:80px; left:370px;"></div>
+                    <div style="display:flex; flex-direction:column; gap:10px; width:150px;">
+                        <div class="flow-node" id="node-5" style="border-color: var(--success); color: var(--success);">Champions</div>
+                        <div class="flow-node" id="node-6" style="border-color: var(--danger); color: var(--danger);">At Risk</div>
+                    </div>
+                `
+            }
+        };
+
+        function openModal(type) {
+            const modal = document.getElementById('flow-modal');
+            const title = document.getElementById('modal-title');
+            const container = document.getElementById('flow-container');
+            
+            title.textContent = flowData[type].title;
+            container.innerHTML = flowData[type].html;
+            
+            modal.classList.add('active');
+            
+            // Trigger animations sequentially
+            setTimeout(() => {
+                const nodes = container.querySelectorAll('.flow-node');
+                const lines = container.querySelectorAll('.flow-line');
+                
+                nodes.forEach((node, idx) => {
+                    setTimeout(() => {
+                        node.classList.add('active');
+                    }, idx * 500); // 500ms stagger
+                });
+                
+                lines.forEach((line, idx) => {
+                    setTimeout(() => {
+                        line.classList.add('active');
+                    }, (idx * 500) + 300);
+                });
+            }, 300); // Wait for modal to pop in
+        }
+
+        function closeModal(e) {
+            if (e.target.id === 'flow-modal' || e.target.classList.contains('modal-close')) {
+                document.getElementById('flow-modal').classList.remove('active');
+                // Clear content after animation
+                setTimeout(() => {
+                    document.getElementById('flow-container').innerHTML = '';
+                }, 300);
+            }
+        }
+
         async function runABTest() {
             const btn = document.getElementById('btn-abtest');
             const empty = document.getElementById('empty-abtest');
