@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 import sys
 import os
@@ -22,6 +22,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/")
+def serve_frontend():
+    html_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "index.html")
+    with open(html_path, "r") as f:
+        return HTMLResponse(content=f.read())
 
 @app.get("/api/ab-test")
 def run_ab_test():
