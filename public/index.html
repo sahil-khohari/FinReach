@@ -40,6 +40,17 @@
             overflow-x: hidden;
         }
 
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
         header {
             text-align: center;
             margin-bottom: 3rem;
@@ -684,6 +695,7 @@
     </style>
 </head>
 <body>
+    <canvas id="bg-canvas"></canvas>
 
     <!-- Landing Page Hero -->
     <section class="hero">
@@ -1022,6 +1034,68 @@
                 btn.classList.add('btn-ai');
             }
         }
+
+        // --- Data Flow Background Animation ---
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const particles = [];
+        const particleCount = 80;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.8,
+                vy: (Math.random() - 0.5) * 0.8,
+                size: Math.random() * 2 + 1,
+            });
+        }
+
+        function drawDataFlow() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(102, 252, 241, 0.6)';
+            
+            for (let i = 0; i < particleCount; i++) {
+                const p1 = particles[i];
+                p1.x += p1.vx;
+                p1.y += p1.vy;
+                
+                // Screen wrap
+                if (p1.x < 0) p1.x = canvas.width;
+                if (p1.x > canvas.width) p1.x = 0;
+                if (p1.y < 0) p1.y = canvas.height;
+                if (p1.y > canvas.height) p1.y = 0;
+                
+                // Draw particle node
+                ctx.beginPath();
+                ctx.arc(p1.x, p1.y, p1.size, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Draw connecting lines (data mesh)
+                for (let j = i + 1; j < particleCount; j++) {
+                    const p2 = particles[j];
+                    const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = \`rgba(102, 252, 241, \${(1 - dist/120) * 0.5})\`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(drawDataFlow);
+        }
+        drawDataFlow();
     </script>
 </body>
 </html>
