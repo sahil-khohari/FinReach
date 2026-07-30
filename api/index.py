@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fastapi.responses import JSONResponse, HTMLResponse
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import sys
 import os
@@ -13,7 +13,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from phase3_rfm_ab_testing import ab_test_funnel
 from phase4_ai_action_engine import generate_recommendations
 
-app = FastAPI()
+app = FastAPI(title="FinReach API")
 
 app.add_middleware(
     CORSMiddleware,
@@ -22,12 +22,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-@app.get("/")
-def serve_frontend():
-    html_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "index.html")
-    with open(html_path, "r") as f:
-        return HTMLResponse(content=f.read())
 
 @app.get("/api/ab-test")
 def run_ab_test():
