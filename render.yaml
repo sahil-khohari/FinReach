@@ -1,0 +1,7 @@
+services:
+  - type: worker
+    name: finreach-worker
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python phase1_data_generation.py && python phase3_rfm_ab_testing.py && python phase4_ai_action_engine.py"
+    # Note: Configure GEMINI_API_KEY in the Render dashboard
