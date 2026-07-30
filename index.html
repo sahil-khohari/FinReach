@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinReach - Product Analytics Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --accent: #00d2ff;
+            --accent-alt: #3a7bd5;
+            --text-main: #f0f4f8;
+            --text-muted: #a0aec0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(58, 123, 213, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 210, 255, 0.15), transparent 25%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 1rem;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent), var(--accent-alt));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 210, 255, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--accent-alt), var(--accent));
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            color: #a3b8cc;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border: 1px solid var(--glass-border);
+            min-height: 100px;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            display: none;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>FinReach Analytics</h1>
+        <p class="subtitle">Live Product & Customer Analytics Demonstration</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- A/B Testing Card -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">1. Funnel A/B Testing Engine</div>
+                <button class="btn" id="btn-abtest" onclick="runABTest()">
+                    Run Analysis <div class="spinner" id="spin-abtest"></div>
+                </button>
+            </div>
+            <p class="subtitle" style="margin-bottom: 1rem;">Calculates Z-statistic & p-value for funnel conversion variants using Scipy.</p>
+            <pre id="out-abtest">Awaiting execution...</pre>
+        </div>
+
+        <!-- AI Actions Card -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">2. AI Next-Best-Action Engine</div>
+                <button class="btn" id="btn-aiaction" onclick="runAIAction()">
+                    Generate Insights <div class="spinner" id="spin-aiaction"></div>
+                </button>
+            </div>
+            <p class="subtitle" style="margin-bottom: 1rem;">Processes RFM clusters via Gemini API to generate tailored business actions.</p>
+            <pre id="out-aiaction">Awaiting execution...</pre>
+        </div>
+        
+    </div>
+
+    <script>
+        async function runABTest() {
+            const btn = document.getElementById('btn-abtest');
+            const spin = document.getElementById('spin-abtest');
+            const out = document.getElementById('out-abtest');
+            
+            btn.disabled = true;
+            spin.style.display = 'inline-block';
+            out.textContent = 'Running statistical test...';
+
+            try {
+                const response = await fetch('/api/ab-test');
+                const result = await response.json();
+                if(result.status === 'success') {
+                    out.textContent = result.output;
+                } else {
+                    out.textContent = 'Error: ' + JSON.stringify(result);
+                }
+            } catch (err) {
+                out.textContent = 'Network Error: ' + err.message;
+            } finally {
+                btn.disabled = false;
+                spin.style.display = 'none';
+            }
+        }
+
+        async function runAIAction() {
+            const btn = document.getElementById('btn-aiaction');
+            const spin = document.getElementById('spin-aiaction');
+            const out = document.getElementById('out-aiaction');
+            
+            btn.disabled = true;
+            spin.style.display = 'inline-block';
+            out.textContent = 'Consulting Gemini LLM with RFM metrics...';
+
+            try {
+                const response = await fetch('/api/ai-action');
+                const result = await response.json();
+                if(result.status === 'success') {
+                    out.textContent = JSON.stringify(result.data, null, 2);
+                } else {
+                    out.textContent = 'Error: ' + result.output;
+                }
+            } catch (err) {
+                out.textContent = 'Network Error: ' + err.message;
+            } finally {
+                btn.disabled = false;
+                spin.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
