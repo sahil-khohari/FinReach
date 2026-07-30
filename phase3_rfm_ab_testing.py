@@ -57,15 +57,18 @@ def ab_test_funnel(control_users, control_conversions, variant_users, variant_co
     ci_low = (prop_B - prop_A) - 1.96 * se
     ci_high = (prop_B - prop_A) + 1.96 * se
     
-    print(f"Variant A Conversion: {prop_A:.2%}")
-    print(f"Variant B Conversion: {prop_B:.2%}")
-    print(f"Z-statistic: {z_stat:.4f}, p-value: {p_value:.4f}")
-    print(f"95% CI for Difference (B-A): [{ci_low:.4f}, {ci_high:.4f}]")
+    result_data = {
+        "variant_a_conversion": round(prop_A, 4),
+        "variant_b_conversion": round(prop_B, 4),
+        "z_statistic": round(z_stat, 4),
+        "p_value": round(p_value, 4),
+        "ci_low": round(ci_low, 4),
+        "ci_high": round(ci_high, 4),
+        "significant": bool(p_value < 0.05),
+        "message": "Statistically significant improvement in Variant B." if p_value < 0.05 else "No statistically significant difference."
+    }
     
-    if p_value < 0.05:
-        print("Result: Statistically significant improvement in Variant B.")
-    else:
-        print("Result: No statistically significant difference.")
+    return result_data
 
 if __name__ == "__main__":
     # Test A/B Test

@@ -25,11 +25,12 @@ app.add_middleware(
 
 @app.get("/api/ab-test")
 def run_ab_test():
-    f = io.StringIO()
-    with redirect_stdout(f):
-        ab_test_funnel(5000, 1000, 5000, 1150)
-    output = f.getvalue()
-    return {"status": "success", "output": output}
+    try:
+        # Instead of redirecting stdout, we now get the dict directly
+        result_data = ab_test_funnel(5000, 1000, 5000, 1150)
+        return {"status": "success", "data": result_data}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
 
 @app.get("/api/ai-action")
 def run_ai_action():
