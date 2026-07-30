@@ -10,7 +10,7 @@ def generate_recommendations(rfm_data):
     """
     rfm_data: list of dicts with segment metrics
     """
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={GEMINI_API_KEY}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
     
     prompt = f"""
     You are an expert product growth manager and data scientist for a digital micro-lending app called FinReach.
