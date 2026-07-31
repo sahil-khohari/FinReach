@@ -10,8 +10,8 @@ from contextlib import redirect_stdout
 # Ensure the parent directory is in the path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from phase3_rfm_ab_testing import ab_test_funnel
-from phase4_ai_action_engine import generate_recommendations
+from rfm_ab_testing import ab_test_funnel
+from ai_action_engine import generate_recommendations
 
 app = FastAPI(title="FinReach API")
 
