@@ -833,34 +833,56 @@
             'rigor': {
                 title: 'Data-Driven Rigor',
                 html: `
-                    <div style="text-align: center; width: 100%;">
-                        <img src="/images/dashboard.png" style="width: 100%; max-height: 350px; object-fit: cover; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" alt="Data-Driven Rigor">
-                        <p style="color: var(--text-main); font-size: 1.1rem; line-height: 1.6;">
-                            We split live traffic between two funnel variants and process the telemetry through a <strong>SciPy Stats Engine</strong>. The engine performs a rigorous two-proportion Z-test to guarantee the winner isn't just a fluke, bringing true science to product decisions.
-                        </p>
+                    <div class="flow-container" style="justify-content: center; padding: 1rem 0 3rem 0; transform: scale(0.9); flex-wrap: wrap;">
+                        <div style="display:flex; flex-direction:column; gap:20px; width:180px; z-index: 2;">
+                            <div class="flow-node" id="node-1"><svg style="width:24px;height:24px;margin-bottom:8px;fill:var(--accent)" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><br>Traffic: Variant A</div>
+                            <div class="flow-node" id="node-2"><svg style="width:24px;height:24px;margin-bottom:8px;fill:var(--accent)" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><br>Traffic: Variant B</div>
+                        </div>
+                        <div class="flow-line" id="line-1" style="position: relative; width: 60px; margin: 0 -10px;"></div>
+                        <div class="flow-node node-engine" id="node-3" style="z-index: 2;"><svg style="width:32px;height:32px;margin-bottom:8px;fill:var(--accent)" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg><br>Scipy Stats<br>Engine</div>
+                        <div class="flow-line" id="line-2" style="position: relative; width: 60px; margin: 0 -10px;"></div>
+                        <div class="flow-node node-result" id="node-4" style="z-index: 2;"><svg style="width:28px;height:28px;margin-bottom:8px;fill:var(--success)" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><br>Winner Found</div>
                     </div>
+                    <p style="color: var(--text-main); font-size: 1.1rem; line-height: 1.6; padding: 0 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; text-align: center;">
+                        We split live traffic between two funnel variants and process the telemetry through a <strong>SciPy Stats Engine</strong>. The engine performs a rigorous two-proportion Z-test to guarantee the winner isn't just a fluke, bringing true science to product decisions.
+                    </p>
                 `
             },
             'ai': {
                 title: 'AI Next-Best-Action',
                 html: `
-                    <div style="text-align: center; width: 100%;">
-                        <img src="/images/nexus.png" style="width: 100%; max-height: 350px; object-fit: cover; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" alt="AI Next-Best-Action">
-                        <p style="color: var(--text-main); font-size: 1.1rem; line-height: 1.6;">
-                            The <strong>Gemini LLM</strong> acts as the central brain of our analytics. We feed it structured JSON data of your underperforming borrower segments, and it autonomously outputs personalized, actionable marketing strategies—moving beyond passive dashboards into decision intelligence.
-                        </p>
+                    <div class="flow-container" style="justify-content: center; padding: 1rem 0 3rem 0; transform: scale(0.9); flex-wrap: wrap;">
+                        <div class="flow-node" id="node-1" style="z-index: 2;"><svg style="width:28px;height:28px;margin-bottom:8px;fill:var(--accent)" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg><br>RFM Clusters<br>(JSON Data)</div>
+                        <div class="flow-line" id="line-1" style="position: relative; width: 80px; margin: 0 -10px;"></div>
+                        <div class="flow-node node-engine" id="node-2" style="border-color: #aa00ff; box-shadow: 0 0 20px rgba(170,0,255,0.4); z-index: 2;"><svg style="width:32px;height:32px;margin-bottom:8px;fill:#aa00ff" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><br>Gemini LLM</div>
+                        <div class="flow-line" id="line-2" style="position: relative; width: 80px; margin: 0 -10px;"></div>
+                        <div class="flow-node" id="node-3" style="border-color: var(--accent); z-index: 2;"><svg style="width:28px;height:28px;margin-bottom:8px;fill:var(--accent)" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9zM12 4.15L6.04 7.5 12 10.85l5.96-3.35L12 4.15zM5 15.91l6 3.38v-6.71L5 9.21v6.7zM19 15.91v-6.7l-6 3.37v6.71l6-3.38z"/></svg><br>Strategy Cards</div>
                     </div>
+                    <p style="color: var(--text-main); font-size: 1.1rem; line-height: 1.6; padding: 0 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; text-align: center;">
+                        The <strong>Gemini LLM</strong> acts as the central brain of our analytics. We feed it structured JSON data of your underperforming borrower segments, and it autonomously outputs personalized, actionable marketing strategies—moving beyond passive dashboards into decision intelligence.
+                    </p>
                 `
             },
             'rfm': {
                 title: 'RFM Segmentation',
                 html: `
-                    <div style="text-align: center; width: 100%;">
-                        <img src="/images/concept.png" style="width: 100%; max-height: 350px; object-fit: cover; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" alt="RFM Segmentation">
-                        <p style="color: var(--text-main); font-size: 1.1rem; line-height: 1.6;">
-                            Users are algorithmically categorized into distinct cohorts (like 'Champions' or 'At Risk') by evaluating their <strong>Recency, Frequency, and Monetary</strong> values using Pandas statistical modeling. This ensures your marketing interventions are hyper-targeted.
-                        </p>
+                    <div class="flow-container" style="justify-content: center; padding: 1rem 0 3rem 0; transform: scale(0.9); flex-wrap: wrap;">
+                        <div style="display:flex; flex-direction:column; gap:10px; width:150px; z-index: 2;">
+                            <div class="flow-node" id="node-1" style="padding: 1rem;"><svg style="width:20px;height:20px;margin-bottom:4px;fill:var(--text-light)" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg><br>Recency Score</div>
+                            <div class="flow-node" id="node-2" style="padding: 1rem;"><svg style="width:20px;height:20px;margin-bottom:4px;fill:var(--text-light)" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><br>Frequency Score</div>
+                            <div class="flow-node" id="node-3" style="padding: 1rem;"><svg style="width:20px;height:20px;margin-bottom:4px;fill:var(--text-light)" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg><br>Monetary Score</div>
+                        </div>
+                        <div class="flow-line" id="line-1" style="position: relative; width: 50px; margin: 0 -10px;"></div>
+                        <div class="flow-node node-engine" id="node-4" style="z-index: 2;"><svg style="width:32px;height:32px;margin-bottom:8px;fill:var(--accent)" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg><br>Pandas QCut</div>
+                        <div class="flow-line" id="line-2" style="position: relative; width: 50px; margin: 0 -10px;"></div>
+                        <div style="display:flex; flex-direction:column; gap:10px; width:150px; z-index: 2;">
+                            <div class="flow-node" id="node-5" style="border-color: var(--success); color: var(--success);"><svg style="width:24px;height:24px;margin-bottom:8px;fill:var(--success)" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><br>Champions</div>
+                            <div class="flow-node" id="node-6" style="border-color: var(--danger); color: var(--danger);"><svg style="width:24px;height:24px;margin-bottom:8px;fill:var(--danger)" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg><br>At Risk</div>
+                        </div>
                     </div>
+                    <p style="color: var(--text-main); font-size: 1.1rem; line-height: 1.6; padding: 0 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; text-align: center;">
+                        Users are algorithmically categorized into distinct cohorts (like 'Champions' or 'At Risk') by evaluating their <strong>Recency, Frequency, and Monetary</strong> values using Pandas statistical modeling. This ensures your marketing interventions are hyper-targeted.
+                    </p>
                 `
             }
         };
