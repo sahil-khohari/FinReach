@@ -1192,12 +1192,80 @@
             'ai': {
                 title: 'AI Next-Best-Action',
                 html: `
-                    <div class="flow-container" style="justify-content: center; padding: 1rem 0 3rem 0; transform: scale(0.9); flex-wrap: wrap;">
-                        <div class="flow-node" id="node-1" style="z-index: 2;"><svg style="width:28px;height:28px;margin-bottom:8px;fill:var(--accent)" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg><br>RFM Clusters<br>(JSON Data)</div>
-                        <div class="flow-line" id="line-1" style="position: relative; width: 80px; margin: 0 -10px;"></div>
-                        <div class="flow-node node-engine" id="node-2" style="border-color: #aa00ff; box-shadow: 0 0 20px rgba(170,0,255,0.4); z-index: 2;"><svg style="width:32px;height:32px;margin-bottom:8px;fill:#aa00ff" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><br>Gemini LLM</div>
-                        <div class="flow-line" id="line-2" style="position: relative; width: 80px; margin: 0 -10px;"></div>
-                        <div class="flow-node" id="node-3" style="border-color: var(--accent); z-index: 2;"><svg style="width:28px;height:28px;margin-bottom:8px;fill:var(--accent)" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9zM12 4.15L6.04 7.5 12 10.85l5.96-3.35L12 4.15zM5 15.91l6 3.38v-6.71L5 9.21v6.7zM19 15.91v-6.7l-6 3.37v6.71l6-3.38z"/></svg><br>Strategy Cards</div>
+                    <div class="v-flow-container">
+                        <!-- Node 1 -->
+                        <div class="v-flow-row">
+                            <div class="v-flow-node-wrapper">
+                                <div class="v-flow-node" style="border-color: #aa00ff;">
+                                    <div class="v-flow-icon" style="color: #aa00ff;">
+                                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+                                    </div>
+                                    <div class="v-flow-content">
+                                        <div class="v-flow-title" style="color: #aa00ff;">RFM Clusters</div>
+                                        <div class="v-flow-subtext">JSON Data of borrower segments</div>
+                                    </div>
+                                </div>
+                                <div class="v-flow-arrow" style="background: #aa00ff;"></div>
+                                <div class="v-flow-dotted" style="border-color: rgba(170,0,255,0.5);"></div>
+                            </div>
+                            <div class="v-flow-explanation">We extract high-value or at-risk<br>cohorts from our database.</div>
+                        </div>
+
+                        <!-- Node 2 -->
+                        <div class="v-flow-row">
+                            <div class="v-flow-node-wrapper">
+                                <div class="v-flow-node circle" style="border-color: #aa00ff; box-shadow: 0 0 30px rgba(170,0,255,0.2);">
+                                    <div class="v-flow-icon" style="margin-bottom: 5px; color: #aa00ff;">
+                                        <svg viewBox="0 0 24 24" style="width:48px;height:48px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                                    </div>
+                                    <div class="v-flow-title" style="font-size: 1.25rem; line-height: 1.2; color: #aa00ff;">Gemini<br>LLM</div>
+                                </div>
+                                <div class="v-flow-arrow" style="background: #aa00ff;"></div>
+                                <div class="v-flow-dotted" style="border-color: rgba(170,0,255,0.5);"></div>
+                            </div>
+                            <div class="v-flow-explanation">Data is passed into Google's<br><strong>Gemini AI model</strong> with custom<br>prompting to generate insights.</div>
+                        </div>
+
+                        <!-- Node 3 -->
+                        <div class="v-flow-row">
+                            <div class="v-flow-node-wrapper">
+                                <div class="v-flow-node" style="border-color: #aa00ff;">
+                                    <div class="v-flow-icon" style="color: #aa00ff;">
+                                        <svg viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9zM12 4.15L6.04 7.5 12 10.85l5.96-3.35L12 4.15zM5 15.91l6 3.38v-6.71L5 9.21v6.7zM19 15.91v-6.7l-6 3.37v6.71l6-3.38z"/></svg>
+                                    </div>
+                                    <div class="v-flow-content">
+                                        <div class="v-flow-title" style="color: #aa00ff;">Strategy Cards</div>
+                                        <div class="v-flow-subtext">Actionable marketing strategies</div>
+                                    </div>
+                                </div>
+                                <div class="v-flow-dotted" style="border-color: rgba(170,0,255,0.5);"></div>
+                            </div>
+                            <div class="v-flow-explanation">The AI autonomously outputs<br>hyper-personalized interventions.</div>
+                        </div>
+
+                        <!-- Bottom Bar -->
+                        <div class="v-flow-bottom-bar" style="border-color: rgba(170,0,255,0.2);">
+                            <div class="v-flow-step">
+                                <div class="v-flow-step-icon" style="color: #aa00ff;"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg></div>
+                                <div class="v-flow-step-content">
+                                    <div class="v-flow-step-title">Data Ingestion</div>
+                                </div>
+                            </div>
+                            <div class="v-flow-step-arrow">→</div>
+                            <div class="v-flow-step">
+                                <div class="v-flow-step-icon" style="color: #aa00ff;"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
+                                <div class="v-flow-step-content">
+                                    <div class="v-flow-step-title">LLM Processing</div>
+                                </div>
+                            </div>
+                            <div class="v-flow-step-arrow">→</div>
+                            <div class="v-flow-step">
+                                <div class="v-flow-step-icon" style="color: #aa00ff;"><svg viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9zM12 4.15L6.04 7.5 12 10.85l5.96-3.35L12 4.15zM5 15.91l6 3.38v-6.71L5 9.21v6.7zM19 15.91v-6.7l-6 3.37v6.71l6-3.38z"/></svg></div>
+                                <div class="v-flow-step-content">
+                                    <div class="v-flow-step-title">Strategy Generation</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <p style="color: var(--text-main); font-size: 1.1rem; line-height: 1.6; padding: 0 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; text-align: center;">
                         The <strong>Gemini LLM</strong> acts as the central brain of our analytics. We feed it structured JSON data of your underperforming borrower segments, and it autonomously outputs personalized, actionable marketing strategies—moving beyond passive dashboards into decision intelligence.
@@ -1207,18 +1275,79 @@
             'rfm': {
                 title: 'RFM Segmentation',
                 html: `
-                    <div class="flow-container" style="justify-content: center; padding: 1rem 0 3rem 0; transform: scale(0.9); flex-wrap: wrap;">
-                        <div style="display:flex; flex-direction:column; gap:10px; width:150px; z-index: 2;">
-                            <div class="flow-node" id="node-1" style="padding: 1rem;"><svg style="width:20px;height:20px;margin-bottom:4px;fill:var(--text-light)" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg><br>Recency Score</div>
-                            <div class="flow-node" id="node-2" style="padding: 1rem;"><svg style="width:20px;height:20px;margin-bottom:4px;fill:var(--text-light)" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg><br>Frequency Score</div>
-                            <div class="flow-node" id="node-3" style="padding: 1rem;"><svg style="width:20px;height:20px;margin-bottom:4px;fill:var(--text-light)" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg><br>Monetary Score</div>
+                    <div class="v-flow-container">
+                        <!-- Node 1 -->
+                        <div class="v-flow-row">
+                            <div class="v-flow-node-wrapper">
+                                <div class="v-flow-node">
+                                    <div class="v-flow-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                                    </div>
+                                    <div class="v-flow-content">
+                                        <div class="v-flow-title">RFM Metrics</div>
+                                        <div class="v-flow-subtext">Recency, Frequency, Monetary</div>
+                                    </div>
+                                </div>
+                                <div class="v-flow-arrow"></div>
+                                <div class="v-flow-dotted"></div>
+                            </div>
+                            <div class="v-flow-explanation">We calculate three key behavioral<br>scores for every single user.</div>
                         </div>
-                        <div class="flow-line" id="line-1" style="position: relative; width: 50px; margin: 0 -10px;"></div>
-                        <div class="flow-node node-engine" id="node-4" style="z-index: 2;"><svg style="width:32px;height:32px;margin-bottom:8px;fill:var(--accent)" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg><br>Pandas QCut</div>
-                        <div class="flow-line" id="line-2" style="position: relative; width: 50px; margin: 0 -10px;"></div>
-                        <div style="display:flex; flex-direction:column; gap:10px; width:150px; z-index: 2;">
-                            <div class="flow-node" id="node-5" style="border-color: var(--success); color: var(--success);"><svg style="width:24px;height:24px;margin-bottom:8px;fill:var(--success)" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><br>Champions</div>
-                            <div class="flow-node" id="node-6" style="border-color: var(--danger); color: var(--danger);"><svg style="width:24px;height:24px;margin-bottom:8px;fill:var(--danger)" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg><br>At Risk</div>
+
+                        <!-- Node 2 -->
+                        <div class="v-flow-row">
+                            <div class="v-flow-node-wrapper">
+                                <div class="v-flow-node circle">
+                                    <div class="v-flow-icon" style="margin-bottom: 5px;">
+                                        <svg viewBox="0 0 24 24" style="width:48px;height:48px;"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                                    </div>
+                                    <div class="v-flow-title" style="font-size: 1.25rem; line-height: 1.2;">Pandas<br>QCut<br>Engine</div>
+                                </div>
+                                <div class="v-flow-arrow green"></div>
+                                <div class="v-flow-dotted"></div>
+                            </div>
+                            <div class="v-flow-explanation">Data flows into Pandas where we<br>use <strong>quantile-based discretization</strong><br>to split users evenly.</div>
+                        </div>
+
+                        <!-- Node 3 -->
+                        <div class="v-flow-row">
+                            <div class="v-flow-node-wrapper">
+                                <div class="v-flow-node green">
+                                    <div class="v-flow-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                                    </div>
+                                    <div class="v-flow-content">
+                                        <div class="v-flow-title" style="color: var(--success)">Cohorts Identified</div>
+                                        <div class="v-flow-subtext">Champions, At-Risk, etc.</div>
+                                    </div>
+                                </div>
+                                <div class="v-flow-dotted green"></div>
+                            </div>
+                            <div class="v-flow-explanation">Users are permanently tagged with<br>their respective marketing cohort.</div>
+                        </div>
+
+                        <!-- Bottom Bar -->
+                        <div class="v-flow-bottom-bar">
+                            <div class="v-flow-step">
+                                <div class="v-flow-step-icon"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></div>
+                                <div class="v-flow-step-content">
+                                    <div class="v-flow-step-title">Data Extraction</div>
+                                </div>
+                            </div>
+                            <div class="v-flow-step-arrow">→</div>
+                            <div class="v-flow-step">
+                                <div class="v-flow-step-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+                                <div class="v-flow-step-content">
+                                    <div class="v-flow-step-title">Quantile Cut</div>
+                                </div>
+                            </div>
+                            <div class="v-flow-step-arrow">→</div>
+                            <div class="v-flow-step">
+                                <div class="v-flow-step-icon green"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+                                <div class="v-flow-step-content">
+                                    <div class="v-flow-step-title">Cohort Assignment</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <p style="color: var(--text-main); font-size: 1.1rem; line-height: 1.6; padding: 0 1rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; text-align: center;">
