@@ -833,40 +833,33 @@
             'rigor': {
                 title: 'Data-Driven Rigor',
                 html: `
-                    <div style="display:flex; flex-direction:column; gap:20px; width:180px;">
-                        <div class="flow-node" id="node-1">Traffic: Variant A</div>
-                        <div class="flow-node" id="node-2">Traffic: Variant B</div>
+                    <div style="text-align: center; width: 100%;">
+                        <img src="/images/dashboard.png" style="width: 100%; max-height: 350px; object-fit: cover; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" alt="Data-Driven Rigor">
+                        <p style="color: var(--text-main); font-size: 1.1rem; line-height: 1.6;">
+                            We split live traffic between two funnel variants and process the telemetry through a <strong>SciPy Stats Engine</strong>. The engine performs a rigorous two-proportion Z-test to guarantee the winner isn't just a fluke, bringing true science to product decisions.
+                        </p>
                     </div>
-                    <div class="flow-line" id="line-1" style="width:100px; left:180px;"></div>
-                    <div class="flow-node node-engine" id="node-3">Scipy Stats<br>Engine</div>
-                    <div class="flow-line" id="line-2" style="width:100px; left:420px;"></div>
-                    <div class="flow-node node-result" id="node-4">Winner Found</div>
                 `
             },
             'ai': {
                 title: 'AI Next-Best-Action',
                 html: `
-                    <div class="flow-node" id="node-1">RFM Clusters<br>(JSON Data)</div>
-                    <div class="flow-line" id="line-1" style="width:120px; left:180px;"></div>
-                    <div class="flow-node node-engine" id="node-2" style="border-color: #aa00ff; box-shadow: 0 0 20px rgba(170,0,255,0.4);">Gemini LLM</div>
-                    <div class="flow-line" id="line-2" style="width:120px; left:440px;"></div>
-                    <div class="flow-node" id="node-3" style="border-color: var(--accent);">Strategy Cards</div>
+                    <div style="text-align: center; width: 100%;">
+                        <img src="/images/nexus.png" style="width: 100%; max-height: 350px; object-fit: cover; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" alt="AI Next-Best-Action">
+                        <p style="color: var(--text-main); font-size: 1.1rem; line-height: 1.6;">
+                            The <strong>Gemini LLM</strong> acts as the central brain of our analytics. We feed it structured JSON data of your underperforming borrower segments, and it autonomously outputs personalized, actionable marketing strategies—moving beyond passive dashboards into decision intelligence.
+                        </p>
+                    </div>
                 `
             },
             'rfm': {
                 title: 'RFM Segmentation',
                 html: `
-                    <div style="display:flex; flex-direction:column; gap:10px; width:150px;">
-                        <div class="flow-node" id="node-1" style="padding: 1rem;">Recency Score</div>
-                        <div class="flow-node" id="node-2" style="padding: 1rem;">Frequency Score</div>
-                        <div class="flow-node" id="node-3" style="padding: 1rem;">Monetary Score</div>
-                    </div>
-                    <div class="flow-line" id="line-1" style="width:80px; left:150px;"></div>
-                    <div class="flow-node node-engine" id="node-4">Pandas QCut</div>
-                    <div class="flow-line" id="line-2" style="width:80px; left:370px;"></div>
-                    <div style="display:flex; flex-direction:column; gap:10px; width:150px;">
-                        <div class="flow-node" id="node-5" style="border-color: var(--success); color: var(--success);">Champions</div>
-                        <div class="flow-node" id="node-6" style="border-color: var(--danger); color: var(--danger);">At Risk</div>
+                    <div style="text-align: center; width: 100%;">
+                        <img src="/images/concept.png" style="width: 100%; max-height: 350px; object-fit: cover; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" alt="RFM Segmentation">
+                        <p style="color: var(--text-main); font-size: 1.1rem; line-height: 1.6;">
+                            Users are algorithmically categorized into distinct cohorts (like 'Champions' or 'At Risk') by evaluating their <strong>Recency, Frequency, and Monetary</strong> values using Pandas statistical modeling. This ensures your marketing interventions are hyper-targeted.
+                        </p>
                     </div>
                 `
             }
